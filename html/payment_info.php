@@ -57,3 +57,75 @@
     <br>
     <input type="submit" name="submit_button" id="submit_button" value="Submit"/>
 </div>
+
+<?php 
+
+try
+{
+    $db = new PDO("mysql:host=localhost;dbname=Panda;charset=utf8",'root','root');
+}
+catch (Exception $e)
+{
+    die('Error: '. $e->getMessage());
+}
+
+ ?>
+
+<?php
+    $gift = $_POST['gift_options'];
+    $monthly_amount = $_POST['donate_dollars'];
+    $first_name= $_POST['donor_firstname'];
+    $last_name= $_POST['donor_lastname'];
+    $address1 = $_POST['donor_address1'];
+    $city = $_POST['donor_city'];
+    $country= $_POST['donor_country'];
+    $address2= $_POST['donor_address2'];
+    $state = $_POST['donor_state'];
+    $zipcode= $_POST['donor_zip'];
+    $email = $_POST['donor_email'];
+    $receiveNews= $_POST['donor_receive_news'];
+    $paymentOptions= $_POST['payment_options'];
+    $cc_number= $_POST['credit_card_number'];
+    $cc_expiry= $_POST['cc_expiration_payment'];
+    $cc_cvv= $_POST['cw_cc_number'];
+
+
+if (isset($monthly_amount)) { 
+   
+    if (!empty($gift) AND !empty($first_name) AND !empty($last_name) AND !empty($address1) AND !empty($city) AND !empty($zipcode) AND !empty($email)){
+        echo "its working";
+        $req = $db -> prepare("INSERT INTO donor_info(monthly_amount, gift_options, first_name, last_name, address_1, address_2, city, state_us, zipcode, email VALUES (:monthly_amount, :gift_options,:first_name, :last_name, :address_1, :address_2, :city, :state_us, :zipcode, :email)");
+
+        $req -> execute(array(
+            'monthly_amount' => $monthly_amount,
+            'gift_options' => $gift,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'address_1' => $address1,
+            'address_2' => $address2,
+            'city' => $city,
+            // 'country' => $country,
+            'state_us' => $state,
+            'zipcode' => $zipcode,
+            'email' => $email
+        ));
+    }
+    else{
+        echo 'Please check your inputs';
+    }
+}
+
+
+
+// if (isset($gift) AND isset($monthly_amount) AND isset($first_name) AND isset($last_name) AND isset($address1) AND isset($city) AND isset($country) AND isset($state) AND isset($zipcode) AND isset($email) AND isset($paymentOptions) AND isset($cc_number) AND isset($cc_expiry) AND isset($cc_cvv)){
+
+//         header('Location:thank_you.php');
+// }
+// else{
+//     header('Location:index.php');
+// }
+
+
+
+
+?>

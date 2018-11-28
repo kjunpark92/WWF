@@ -5,7 +5,7 @@
         <label for="ten_dollars">$10</label>
     </div>
     <div class="select_amount">
-        <input type='radio' name='donate_dollars' id='fifteen_dollars' class='bucks' value=15>
+        <input type='radio' name='donate_dollars' id='fifteen_dollars' class='bucks' value=15 checked/>
         <label for="fifteen_dollars">$15</label>
     </div>
     <div class="select_amount">
@@ -21,7 +21,9 @@
         <label for="fifty_dollars">$50</label>
     </div>
     <div id="user_amount">
-        <input type='text' name='donate_dollars' id='other_amount' class='bucks' value='OTHER'>
-        <label for="other_amount">OTHER</label>
+        <input type='text' name='donate_dollars' id='other_amount' class='bucks'>
+        <span id="dollar_sign" style="display:none"> $ </span>
+        <label for="other_amount"> OTHER </label>
+        
     </div>
 </fieldset>
