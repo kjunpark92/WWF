@@ -1,7 +1,7 @@
 <div>
     <?php
     $first_name = $_POST['donor_firstname'];
-    $amount = 10;
+    $amount = (int)$_POST['donate_dollars'];
     $gift = $_POST['gift_options'];
     echo "Thank you for donation " . $first_name . "<br>You gave a monthly donatation of " . $amount . "<br>You will recieve " . $gift;
     ?>
