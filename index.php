@@ -20,7 +20,7 @@
                     <?php include('./html/donate_bar.php');?>
                 </div>
                 <?php
-                    if(isset($_POST['donor_firstname'])){
+                    if(!empty($_POST['credit_card_number']) AND !empty($_POST['cw_cc_number'])){
                         include('./html/thank_you.php');
                     }
                     else {
