@@ -88,11 +88,9 @@ catch (Exception $e)
     $cc_cvv= $_POST['cw_cc_number'];
 
     if (isset($_POST['donate_dollars']) OR isset($_POST['donate_dollars_other'])) { 
-        $monthly_amount = ($_POST['donate_dollars_other'])? $_POST['donate_dollars_other'] : $_POST['donate_dollars'] ;
-
-    if (isset($paymentOptions)) { 
+        $monthly_amount = ($_POST['donate_dollars_other'])? $_POST['donate_dollars_other'] : $_POST['donate_dollars'] ; 
    
-    if (!empty($cc_number) AND !empty($cc_cvv) AND !empty($paymentOptions) !empty($gift) AND !empty($first_name) AND !empty($last_name) AND !empty($address1) AND !empty($city) AND !empty($country) AND !empty($zipcode) AND !empty($email)){
+            if (!empty($cc_number) AND !empty($cc_cvv) AND !empty($paymentOptions) AND !empty($gift) AND !empty($first_name) AND !empty($last_name) AND !empty($address1) AND !empty($city) AND !empty($country) AND !empty($zipcode) AND !empty($email)){
 
         echo "test";
         
