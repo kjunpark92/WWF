@@ -6,9 +6,7 @@ body{
 }
 
 /* **************************************************
-
                 Top logo
-
 *************************************************** */
 
 #top_logo{
@@ -22,9 +20,7 @@ body{
 }
 
 /* **************************************************
-
                 Nav bar black background
-
 *************************************************** */
 
 #navbar{
@@ -143,9 +139,7 @@ left: -138px;
     width: 120px;
 }
 /* **************************************************
-
                 Nav bar blue background
-
 *************************************************** */
 
 ul li {
@@ -278,9 +272,7 @@ ul li {
 } */
 
 /* **************************************************
-
                 Aside / main div / footer
-
 *************************************************** */
 
 #main_wrapper{
@@ -312,9 +304,7 @@ ul li {
 }
 
 /* **************************************************
-
                 Blue links
-
 *************************************************** */
 
 #submit_form a{
@@ -354,9 +344,7 @@ ul li {
 }
 
 /* **************************************************
-
                 Inside Aside
-
 *************************************************** */
 
 .side_banner{
@@ -390,9 +378,7 @@ ul li {
 }
 
 /* **************************************************
-
                 Inside Footer
-
 *************************************************** */
 
 #footer #footer_wrapper{
@@ -436,9 +422,7 @@ ul li {
 }
 
 /* **************************************************
-
                 Top Content(Give monthly)
-
 *************************************************** */
 
 .top_content .hidden_orange {
@@ -507,9 +491,7 @@ ul li {
 }
 
 /* **************************************************
-
                 Submit form
-
 *************************************************** */
 
 #submit_form h6{
@@ -521,67 +503,72 @@ ul li {
 }
 
 /* **************************************************
-
                 donate amount
-
 *************************************************** */
 
 #amount_wrapper{
     border: none;
-}
-#amount_wrapper .select_amount{
-    font-size: 1em;
-    display: inline-block;
-    background-color: #777880;
-    border: 2px solid #777880;
-    border-radius: 5px;
-    color: white;
-    width: 80px;
-    height: 40px;
-    margin-right: 10px;
-    text-align: center;
-    line-height: 40px;
-    cursor: pointer;
-}
-#user_amount{
-    font-size: 1em;
-    display: inline-block;
-    border: 2px solid #777880;
-    border-radius: 5px;
-    width: 100px;
-    height: 40px;
-    margin-right: 10px;
-    text-align: center;
-    line-height: 40px;
-    cursor: pointer;
-    background-color: white;
-    color: #777880;
-}
-.select_amount label {
-    cursor: pointer;
-}
-#amount_wrapper .select_amount:hover{
-    font-size: 1.1em;
-    background-color: #ea890d;
-}
-#user_amount:hover{
-    font-size: 1.1em;
-    background-color: #ea890d;
-}
-#monthly_donation input[type='radio'] {
-    position: fixed;
-    left: -9999px;
-}
-#user_amount input[type='text']{
-    display: none;
-}
+ }
+ 
+ #amount_wrapper .select_amount{
+     font-size: 1em;
+     display: inline-block;
+     background-color: #777880;
+     border: 2px solid #777880;
+     border-radius: 5px;
+     color: white;
+     width: 80px; 
+     height: 40px;
+     margin-right: 10px;
+     text-align: center; 
+     line-height: 40px;
+     cursor: pointer;
+ }
+ 
+ #user_amount{
+     font-size: 1em;
+     display: inline-block;
+     position: absolute;
+     border: 2px solid #777880;
+     border-radius: 5px;
+     width: 100px; 
+     height: 40px;
+     margin-right: 10px;
+     text-align: center; 
+     line-height: 40px;
+     cursor: pointer;
+     background-color: white;
+     color: #777880;
+ }
+ 
+ .select_amount label {
+     cursor: pointer;
+ }
+ 
+ #amount_wrapper .select_amount:hover{
+     font-size: 1.1em;
+     background-color: #ea890d;
+ }
+ 
+ #user_amount:hover{
+     font-size: 1.1em;
+     background-color: #ea890d;
+ }
+ 
+ #monthly_donation input[type='radio'] {
+     position: fixed;
+     left: -9999px;
+ }
+ 
+ #user_amount input[type='text']{
+     display: none;
+     
+ }
 
 
 
 /* **************************************************
-
                 Gift options
-
 *************************************************** */
 
 #gift_wrapper{
@@ -610,9 +597,7 @@ display:block;
 }
 
 /* **************************************************
-
                 Donor information
-
 *************************************************** */
 
 #donor_info{

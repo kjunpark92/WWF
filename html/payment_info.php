@@ -67,17 +67,35 @@ catch (Exception $e)
 {
     die('Error: '. $e->getMessage());
 }
-  ?>
- <?php
+?>
+<?php
+    $gift = $_POST['gift_options'];
+    $first_name= $_POST['donor_firstname'];
+    $last_name= $_POST['donor_lastname'];
+    $address1 = $_POST['donor_address1'];
+    $city = $_POST['donor_city'];
+    $country= $_POST['donor_country'];
+    $address2= $_POST['donor_address2'];
+    $state = $_POST['donor_state'];
+    $zipcode= $_POST['donor_zip'];
+    $email = $_POST['donor_email'];
+    $receiveNews= $_POST['donor_receive_news'];
+    $receiveNews= $_POST['donor_receive_news'];
     $paymentOptions= $_POST['payment_options'];
     $cc_number= $_POST['credit_card_number'];
     $cc_month= $_POST['cc_month'];
     $cc_year= $_POST['cc_year'];
     $cc_cvv= $_POST['cw_cc_number'];
- if (isset($paymentOptions)) { 
+
+    if (isset($_POST['donate_dollars']) OR isset($_POST['donate_dollars_other'])) { 
+        $monthly_amount = ($_POST['donate_dollars_other'])? $_POST['donate_dollars_other'] : $_POST['donate_dollars'] ;
+
+    if (isset($paymentOptions)) { 
    
-    if (!empty($cc_number) AND !empty($cc_cvv)  AND !empty($paymentOptions)){
+    if (!empty($cc_number) AND !empty($cc_cvv) AND !empty($paymentOptions) !empty($gift) AND !empty($first_name) AND !empty($last_name) AND !empty($address1) AND !empty($city) AND !empty($country) AND !empty($zipcode) AND !empty($email)){
+
         echo "test";
+        
         $req = $db -> prepare("INSERT INTO payment_info(payment_type, cc_number, exp_month, exp_year, cvv) VALUES (:payment_type, :cc_number, :exp_month, :exp_year, :cvv)");
          $req -> execute(array(
             'payment_type' => $paymentOptions,
@@ -86,15 +104,25 @@ catch (Exception $e)
             'exp_year' => $cc_year,
             'cvv' => $cc_cvv
         ));
+
+        $req = $db -> prepare("INSERT INTO donor_info(monthly_amount, gift_options, first_name, last_name, address_1, address_2, city, country, state_us, zipcode, email) VALUES (:monthly_amount, :gift_options,:first_name, :last_name, :address_1, :address_2, :city, :country,  :state_us, :zipcode, :email);");
+        $array_to_insert = array(
+            'monthly_amount' => $monthly_amount,
+            'gift_options' => $gift,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'address_1' => $address1,
+            'address_2' => $address2,
+            'city' => $city,
+            'country' => $country,
+            'state_us' => $state,
+            'zipcode' => $zipcode,
+            'email' => $email
+        );
+        $req->execute($array_to_insert);
     }
     else{
-        echo 'Enter correct credit card information';
+        echo 'Please check your inputs';
     }
 }
- // if (isset($gift) AND isset($monthly_amount) AND isset($first_name) AND isset($last_name) AND isset($address1) AND isset($city) AND isset($country) AND isset($state) AND isset($zipcode) AND isset($email) AND isset($paymentOptions) AND isset($cc_number) AND isset($cc_expiry) AND isset($cc_cvv)){
- //         header('Location:thank_you.php');
-// }
-// else{
-//     header('Location:index.php');
-// }
- ?> 
+?> 

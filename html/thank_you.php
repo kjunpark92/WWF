@@ -31,3 +31,24 @@
         <input type="submit" value="Give Again" name="give_again">
     </form>
 </div>
+
+<div>
+    <table>
+        <tr>
+            <td> Recent Donations </td>
+    </tr>
+    <?php 
+        try
+        {
+            $db = new PDO("mysql:host=localhost;dbname=Panda;charset=utf8",'root','root');
+        }
+        catch (Exception $e)
+        {
+            die('Error: '. $e->getMessage());
+        }
+        $req = $db -> query("SELECT donor.first_name, donor.last_name, donor.monthly_amount, donor.city, payment.date FROM donor_info donor, payment_info payment WHERE donor.ID = payment.ID ORDER BY payment.date DESC LIMIT 0,5");
+        while ($data = $req->fetch()){
+            echo $data['first_name'].' '.$data['last_name'].'from '. $data['city'].' made a monthly contribution of '.$data['monthly_amount'].'<br/>';
+        }
+    ?>
+</div>
