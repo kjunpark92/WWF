@@ -2,22 +2,32 @@
             // color change on amount buttons
 //  ---------------------------------------------------------
 
+
 var select_amount = document.querySelectorAll(".select_amount");
+var radio_button_checked = document.querySelector("input[name='donate_dollars']:checked");
+radio_button_checked.parentNode.style.backgroundColor="#ea890d";
 
 for (var i=0; i<select_amount.length; i++){
     select_amount[i].addEventListener('click', function(e){
-        
         for (var j=0; j<select_amount.length; j++){
             select_amount[j]= select_amount[j]+1;
             select_amount[j].style.backgroundColor="#777880";
         }
-        
+
         if (e.target.parentNode.nodeName == "DIV") {
             e.target.parentNode.style.backgroundColor="#ea890d";
-        }
-        else {
+            
+        }else {
             e.target.style.backgroundColor="#ea890d";
+            e.target.firstElementChild.checked = "true";
         }
+        // treatment of the other amount 
+        var user_amount = document.getElementById("user_amount");
+        user_amount.firstElementChild.value= "";
+        user_amount.style="";
+        user_amount.firstElementChild.style.display = "none";
+        user_amount.children[1].style.display = "none"; 
+        user_amount.children[2].style.display = "";        
 
     });  
 }

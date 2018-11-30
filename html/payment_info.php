@@ -72,8 +72,11 @@ catch (Exception $e)
  ?>
 
 <?php
+//     echo "<pre>";
+//    print_r($_REQUEST);
+//     echo "</pre>";
+    
     $gift = $_POST['gift_options'];
-    $monthly_amount = $_POST['donate_dollars'];
     $first_name= $_POST['donor_firstname'];
     $last_name= $_POST['donor_lastname'];
     $address1 = $_POST['donor_address1'];
@@ -89,14 +92,14 @@ catch (Exception $e)
     $cc_expiry= $_POST['cc_expiration_payment'];
     $cc_cvv= $_POST['cw_cc_number'];
 
-
-if (isset($monthly_amount)) { 
-   
-    if (!empty($gift) AND !empty($first_name) AND !empty($last_name) AND !empty($address1) AND !empty($city) AND !empty($zipcode) AND !empty($email)){
+if (isset($_POST['donate_dollars']) OR isset($_POST['donate_dollars_other'])) { 
+    $monthly_amount = ($_POST['donate_dollars_other'])? $_POST['donate_dollars_other'] : $_POST['donate_dollars'] ;
+    
+    if (!empty($gift) AND !empty($first_name) AND !empty($last_name) AND !empty($address1) AND !empty($city) AND !empty($country) AND !empty($zipcode) AND !empty($email)){
+        
         echo "its working";
-        $req = $db -> prepare("INSERT INTO donor_info(monthly_amount, gift_options, first_name, last_name, address_1, address_2, city, state_us, zipcode, email VALUES (:monthly_amount, :gift_options,:first_name, :last_name, :address_1, :address_2, :city, :state_us, :zipcode, :email)");
-
-        $req -> execute(array(
+        $req = $db -> prepare("INSERT INTO donor_info(monthly_amount, gift_options, first_name, last_name, address_1, address_2, city, country, state_us, zipcode, email) VALUES (:monthly_amount, :gift_options,:first_name, :last_name, :address_1, :address_2, :city, :country,  :state_us, :zipcode, :email);");
+        $array_to_insert = array(
             'monthly_amount' => $monthly_amount,
             'gift_options' => $gift,
             'first_name' => $first_name,
@@ -104,11 +107,12 @@ if (isset($monthly_amount)) {
             'address_1' => $address1,
             'address_2' => $address2,
             'city' => $city,
-            // 'country' => $country,
+            'country' => $country,
             'state_us' => $state,
             'zipcode' => $zipcode,
             'email' => $email
-        ));
+        );
+        $req->execute($array_to_insert);
     }
     else{
         echo 'Please check your inputs';

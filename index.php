@@ -1,3 +1,6 @@
+<?php
+    if($_POST)  echo '<pre>'; print_r($_POST); echo '</pre>';
+?>
 <!doctype html>
 <head>
     <meta charset="UTF-8">
@@ -20,12 +23,12 @@
                     <?php include('./html/donate_bar.php');?>
                 </div>
                 <?php
-                    if(isset($_POST['donor_firstname'])){
-                        include('./html/thank_you.php');
-                    }
-                    else {
+                    // if(!empty($_POST['donor_firstname'])){
+                    //     include('./html/thank_you.php');
+                    // }
+                    // else {
                         include('./html/donor_form.php');
-                    }
+                    // }
                 ?>
                 <div id="last_content">
                     When you click submit, your monthly donation will be processed.<br/><br/>
