@@ -1,6 +1,4 @@
-<?php
-    if($_POST)  echo '<pre>'; print_r($_POST); echo '</pre>';
-?>
+
 <!doctype html>
 <head>
     <meta charset="UTF-8">
